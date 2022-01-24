@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.main-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    
+}
+
+.header {
+    width: 100%;
+    height: 15%;
+    text-align: center;
+    font-size: 35px;
+    background-color: aquamarine;
+    vertical-align: middle;
+}
+
+td {
+    border: 4px solid black;
+    text-align: left;
+    vertical-align: top;
+}
+
+.main-body {
+    width: 100%;
+    height: 75%;
+}
+
+.footer {
+    background-color: aquamarine;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    font-size: 25px;
+    vertical-align: middle;
+}
+
+.title-text {
+    margin-top: 1rem;
+}
+
+.first {
+    width: 65%;
+}
+
+.second {
+    width: 35%;
+}
