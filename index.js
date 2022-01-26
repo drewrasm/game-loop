@@ -1,18 +1,19 @@
 var addButton = document.getElementById('add');
 var errorMessage = document.getElementById('error-message')
+var eventDisplay = document.getElementById('events')
 
 const validateInput = () => {
     var name = document.getElementById('name').value;
     var interval = document.getElementById('interval').value;
     var times = document.getElementById('times').value;
 
-    if(!name || name === '') {
+    if (!name || name === '') {
         return 'name cannot be empty'
     }
-    if(isNaN(interval) || interval <= 0) {
+    if (isNaN(interval) || interval <= 0) {
         return 'interval must be a positive integer'
     }
-    if(isNaN(times) || times <= 0) {
+    if (isNaN(times) || times <= 0) {
         return 'times must be a positive integer'
     }
 
@@ -21,6 +22,12 @@ const validateInput = () => {
         interval: interval,
         times: times
     }
+}
+
+const pasteEvent = (eventName, count) => {
+    let event = document.createElement('div');
+    event.innerHTML = `Event: ${eventName} (${count} remaining)`;
+    eventDisplay.appendChild(event);
 }
 
 addButton.addEventListener('click', (e) => {
