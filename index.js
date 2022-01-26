@@ -48,21 +48,20 @@ addButton.addEventListener("click", (e) => {
   events.push(input);
 });
 
-function processInput(elapsedTime) {
-  for (let e of events) {
-    if (e.lastRender == 0) {
-      e.lastRender = elapsedTime;
-    }
-  }
-}
-
 function update(elapsedTime) {
   for (let e of events) {
-    if (Math.abs(e.lastRender - elapsedTime) >= e.interval && e.count > 0) {
+    if (
+      Math.abs(e.lastRender - elapsedTime) >= e.interval &&
+      e.count > 0 &&
+      e.lastRender !== 0
+    ) {
       e.count -= 1;
       e.needsRender = true;
       e.lastRender = elapsedTime;
     } else {
+      if (e.lastRender == 0) {
+        e.lastRender = elapsedTime;
+      }
       e.needsRender = false;
     }
   }
@@ -79,7 +78,6 @@ function render() {
 function gameLoop(timeStamp) {
   let elapsedTime = timeStamp - prevTime;
   prevTime = elapsedTime;
-  processInput(elapsedTime);
   update(elapsedTime);
   render();
   requestAnimationFrame(gameLoop);
